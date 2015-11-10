@@ -26,8 +26,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/local');
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+  // yay!
+});
+
 app.use('/', routes);
-// app.use('/users', users);
+// app.use('/users', users)g;
 
 //load all files in models dir
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
