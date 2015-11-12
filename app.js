@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');//was below
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,8 +6,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 var routes = require('./routes/index');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose'); former spot of var mongoose
 var fs = require('fs');
 // var users = require('./routes/users');
 
@@ -25,12 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/local');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-  // yay!
-});
 
 app.use('/', routes);
 // app.use('/users', users)g;

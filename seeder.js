@@ -1,7 +1,8 @@
 var Chance = require('chance');
 var UsersModel = require('mongoose').model('users');
 //var AlbumsModel = require('mongoose').model('albums');
-//dfgdfg
+var user = require('./../models/user.js');
+
 var malename = new Chance.name({gender: "male"});
 var femname = new Chance.name({gender: "female"});
 var email = new Chance.email();
