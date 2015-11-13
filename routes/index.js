@@ -1,8 +1,8 @@
 var express  = require('express');
 var router   = express.Router();
 var mongoose = require('mongoose');
-var user = require('./../models/users.js');
-mongoose.model(user);
+//var user = require('./../models/users.js');
+//mongoose.model(user);
 
 /*
  //**************change this
