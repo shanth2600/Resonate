@@ -33,6 +33,7 @@ app.use('/', routes);
 // app.use('/users', users)g;
 
 //load all files in models dir
+var models_path = __dirname + '/app/models'
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
   if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
 });
