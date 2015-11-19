@@ -274,32 +274,32 @@ router.get('/getusersbyproximity/:user1', function (req, res, next) {
     });
 });
 
-router.get('/seeder', function (req, res, next){
-    var personSchema = require('mongoose').model('users').schema;
-    var NewUser = mongoose.model('users', personSchema);
+// router.get('/seeder', function (req, res, next){
+//     var personSchema = require('mongoose').model('users').schema;
+//     var NewUser = mongoose.model('users', personSchema);
 
-    var i = 0;
-    while (i<50) {
+//     var i = 0;
+//     while (i<50) {
 
-        var new_user = NewUser({
-            age: chance.age(),
-            name: chance.name(),
-            gender: chance.gender(),
-            email: chance.email(),
-            profile_image: chance.url({path: 'images'}),
-            location: [chance.floating({min: -180, max: 180, fixed: 6}),
-                chance.floating({min: -90, max: 90, fixed: 6})]
+//         var new_user = NewUser({
+//             age: chance.age(),
+//             name: chance.name(),
+//             gender: chance.gender(),
+//             email: chance.email(),
+//             profile_image: chance.url({path: 'images'}),
+//             location: [chance.floating({min: -180, max: 180, fixed: 6}),
+//                 chance.floating({min: -90, max: 90, fixed: 6})]
 
-        });
+//         });
 
-        new_user.save(function (err, test_user) {
-            if (err) return console.error(err);
-            console.log("test_user saved!");
-        });
-        i++;
-    }
-    res.redirect('/');
+//         new_user.save(function (err, test_user) {
+//             if (err) return console.error(err);
+//             console.log("test_user saved!");
+//         });
+//         i++;
+//     }
+//     res.redirect('/');
 
-});
+// });
 
 module.exports = router;
