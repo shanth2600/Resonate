@@ -1,14 +1,16 @@
 var Chance = require('chance');
+var mongoose = require('mongoose');
+var user = require('./../models/users.js');
 var UsersModel = require('mongoose').model('users');
 //var AlbumsModel = require('mongoose').model('albums');
-var user = require('./../models/users.js');
-
-var malename = new Chance.name({gender: "male"});
-var femname = new Chance.name({gender: "female"});
-var email = new Chance.email();
-var email2 = new Chance.email();
-var location = new Chance.coordinates();
-var location2 = new Chance.coordinates();
+var chance= new Chance();
+var malename,femname,email,email2,location,location2;
+ malename = chance.name({gender: "male"});
+ femname =  chance.name({gender: "female"});
+ email =  chance.email();
+ email2 =  chance.email();
+ location =  chance.coordinates();
+ location2 =  chance.coordinates();
 
 exports.seedUsers = function seedUsers() {
     //clear collection?
