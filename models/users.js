@@ -15,6 +15,7 @@ var personSchema = new mongoose.Schema({
     name: String,
     gender: String,
     email: String,
+    profile_image: String,
     //album_list: [number],
     album_list: {},
     location: {
@@ -95,8 +96,7 @@ var test_user_array = [park, csun, chilis, bangkok];
  console.log("test_user saved!");
  });
  */
-/*
+
  mongoose.model('users').find({}, {}).remove(function(err){
  console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
  });
- */

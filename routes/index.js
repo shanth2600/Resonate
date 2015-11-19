@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var Chance = require('chance');
+var chance = new Chance();
 
 /*
  //**************change this
@@ -56,6 +58,7 @@ router.delete('/', function (req, res, next) {
 
  */
 function getAllUsers(model_name) {
+    //not used currently
     var returned_users;
     mongoose.model('users').find(function (req, users) {
         returned_users = users;
@@ -261,7 +264,7 @@ router.get('/getusersbyproximity/:user1', function (req, res, next) {
                 type: 'Point',
                 coordinates: current_user[0].location
             },
-            maxDistance: 100000
+            maxDistance: 10000000000000000000000000
         }).exec(function (error, returned_users) {
             console.log(error);
             console.log('found users:\n' + returned_users);
@@ -269,6 +272,34 @@ router.get('/getusersbyproximity/:user1', function (req, res, next) {
 
         });
     });
+});
+
+router.get('/seeder', function (req, res, next){
+    var personSchema = require('mongoose').model('users').schema;
+    var NewUser = mongoose.model('users', personSchema);
+
+    var i = 0;
+    while (i<50) {
+
+        var new_user = NewUser({
+            age: chance.age(),
+            name: chance.name(),
+            gender: chance.gender(),
+            email: chance.email(),
+            profile_image: chance.url({path: 'images'}),
+            location: [chance.floating({min: -180, max: 180, fixed: 6}),
+                chance.floating({min: -90, max: 90, fixed: 6})]
+
+        });
+
+        new_user.save(function (err, test_user) {
+            if (err) return console.error(err);
+            console.log("test_user saved!");
+        });
+        i++;
+    }
+    res.redirect('/');
+
 });
 
 module.exports = router;
