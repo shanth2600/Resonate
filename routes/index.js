@@ -286,7 +286,7 @@ router.get('/seeder', function (req, res, next){
             name: chance.name(),
             gender: chance.gender(),
             email: chance.email(),
-            profile_image: Faker.image.avatar(),
+            profile_image: Faker.image.avatar,
             location: [chance.floating({min: -180, max: 180, fixed: 6}),
                 chance.floating({min: -90, max: 90, fixed: 6})]
 
