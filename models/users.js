@@ -90,9 +90,9 @@ var test_user = users({
 
 var test_user_array = [park, csun, chilis, bangkok];
 
-bangkok.following.push(csun);
+//bangkok.following.push(csun);
 //chilis.save();
-
+/*
 users
     .find({name:"bangkok"})
     .populate('following')
@@ -100,7 +100,7 @@ users
         if (err) return handleError(err);
         console.log(' %s', users);
     });
-
+*/
 /*
  for (var i=0; i<test_user_array.length; i++) {
  test_user_array[i].save(function (err, saved_user) {
@@ -124,6 +124,6 @@ users
  subdoc.isNew; // true
 */
 
-// mongoose.model('users').find({}, {}).remove(function(err){
-//  console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
-// });
+ //mongoose.model('users').find({}, {}).remove(function(err){
+//console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
+ //});
