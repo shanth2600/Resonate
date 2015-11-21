@@ -97,6 +97,6 @@ var test_user_array = [park, csun, chilis, bangkok];
  });
  */
 
- mongoose.model('users').find({}, {}).remove(function(err){
- console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
- });
+ // mongoose.model('users').find({}, {}).remove(function(err){
+ // console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
+ // });
