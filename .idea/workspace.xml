@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d044d664-38bd-4d0f-94e3-893308cdeaad" name="Default" comment="added faker and profile pics&#10;">
-      <change type="DELETED" beforePath="C:\Users\Alden\Desktop\sharetest\new\Resonate\models\albums.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Alden\Desktop\sharetest\new\Resonate\models\seeder.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/users.js" afterPath="$PROJECT_DIR$/models/users.js" />
+    <list default="true" id="d044d664-38bd-4d0f-94e3-893308cdeaad" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Resonate.iws" />
@@ -51,8 +47,8 @@
       <file leaf-file-name="users.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4256757">
-              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state vertical-scroll-proportion="2.7280405">
+              <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -239,7 +235,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448135689782</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="faker and profile pics">
+      <created>1448147562774</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1448147562774</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -281,7 +283,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="actual profile images" />
     <MESSAGE value="added faker and profile pics&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="added faker and profile pics&#10;" />
+    <MESSAGE value="faker and profile pics" />
+    <option name="LAST_COMMIT_MESSAGE" value="faker and profile pics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -653,8 +656,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4256757">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.7280405">
+          <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
           <folding />
         </state>
       </provider>
