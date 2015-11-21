@@ -4,15 +4,23 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app   = require('../app');
 var debug = require('debug')('resonate:server');
-var http = require('http');
+var http  = require('http');
+var path  = require('path')
+var fs    = require('fs');
+var privateKey  = fs.readFileSync(__dirname+'/../certs/server/key.pem', 'utf8');
+var certificate = fs.readFileSync(__dirname+'/../certs/server/cert.pem', 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
+
+
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /**
