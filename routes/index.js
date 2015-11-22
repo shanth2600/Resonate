@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Chance = require('chance');
 var chance = new Chance();
+var Faker = require('Faker');
 
 /*
  //**************change this
@@ -286,7 +287,7 @@ router.get('/seeder', function (req, res, next){
             name: chance.name(),
             gender: chance.gender(),
             email: chance.email(),
-            profile_image: chance.url({path: 'images'}),
+            profile_image: Faker.image.avatar().replace("https","http"),
             location: [chance.floating({min: -180, max: 180, fixed: 6}),
                 chance.floating({min: -90, max: 90, fixed: 6})]
 
