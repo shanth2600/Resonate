@@ -18,9 +18,12 @@ var personSchema = new mongoose.Schema({
     profile_image: String,
     //album_list: [number],
     album_list: {},
+    bio: String,
     location: {
         type: [Number], index: '2dsphere'
-    }
+    },
+    following:[{type:mongoose.Schema.Types.ObjectId, ref: 'users'}],
+    //followers:[mongoose.Schema.Types.ObjectId]
     //album has albumid and playcount
     /*
      album:[
@@ -34,6 +37,11 @@ var personSchema = new mongoose.Schema({
 
 var User = mongoose.model('users', personSchema);
 
+
+/*User.save(function (err) {
+    if (err) return handleError(err)
+    console.log('Success!');
+});*/
 var park = new User(
     {
         name: "Park",
@@ -80,8 +88,43 @@ var test_user = User({
 
 });
 
+var test_user2 = User({
+        age: 20,
+        name: 'Johnny Longjohnny_',
+        gender: 'Undefined',
+        email: 'Longjohnny@gmail.com',
+        album_list: {
+            "Reluctant Delirious": "Video Of Citizen",
+            "Drooling Metaphor": "Video Of Citizen"
+        }
+    ,
+    location: [-118.4967633, 34.2622889],
+
+});
+test_user2.save();
 var test_user_array = [park, csun, chilis, bangkok];
 
+csun.save();
+
+park.following.push(csun);
+park.save();
+
+User
+    .find({name:"Park"})
+    .populate('following')
+    .exec(function (err, users) {
+        if (err) return handleError(err);
+        console.log('The follower is %s', park.following);
+    });
+User
+    .findOne({name:"Johnny Longjohnny_"})
+    .exec(function (err, users) {
+        if (err) return handleError(err);
+        console.log("here's johnny");
+        console.log("current user is " + users);
+        for(album_name in users.album_list){
+            console.log(album_name + " : " + users.album_list[album_name]);
+        }    });
 /*
  for (var i=0; i<test_user_array.length; i++) {
  test_user_array[i].save(function (err, saved_user) {
@@ -95,8 +138,16 @@ var test_user_array = [park, csun, chilis, bangkok];
  if (err) return console.error(err);
  console.log("test_user saved!");
  });
+
  */
 
- // mongoose.model('users').find({}, {}).remove(function(err){
- // console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
- // });
+/*
+ bangkok.following.push({ObjectId:['5650e3ccb6e06a680557495a']});
+ var subdoc = bangkok.following[0];
+ console.log(subdoc) // {  }
+ subdoc.isNew; // true
+*/
+
+  //mongoose.model('users').find({}, {}).remove(function(err){
+  //console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
+  //});
