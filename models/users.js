@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 /*
  var usersSchema = new Schema({
  name: String
@@ -19,6 +20,7 @@ var personSchema = new mongoose.Schema({
     profile_image: String,
     //album_list: [number],
     album_list: {},
+    bio: String,
     location: {
         type: [Number], index: '2dsphere'
     },
@@ -42,7 +44,7 @@ var users = mongoose.model('users', personSchema);
     if (err) return handleError(err)
     console.log('Success!');
 });*/
-var park = new users(
+var park = new User(
     {
         name: "Park",
         location: [-118.4967633, 34.2622889]
@@ -88,42 +90,42 @@ var test_user = users({
 
 });
 
+var test_user2 = User({
+        age: 20,
+        name: 'Johnny Longjohnny_',
+        gender: 'Undefined',
+        email: 'Longjohnny@gmail.com',
+        album_list: {
+            "Reluctant Delirious": "Video Of Citizen",
+            "Drooling Metaphor": "Video Of Citizen"
+        }
+    ,
+    location: [-118.4967633, 34.2622889],
+
+});
+test_user2.save();
 var test_user_array = [park, csun, chilis, bangkok];
 
-//bangkok.following.push(csun);
-//chilis.save();
-/*
-users
-    .find({name:"bangkok"})
+//csun.save();
+
+park.following.push(csun);
+//park.save();
+
+
+User
+    .find({name:"Park"})
     .populate('following')
     .exec(function (err, users) {
         if (err) return handleError(err);
-        console.log(' %s', users);
+        console.log('The follower is %s', park.following);
     });
-*/
-/*
- for (var i=0; i<test_user_array.length; i++) {
- test_user_array[i].save(function (err, saved_user) {
- if (err) return console.error(err);
- console.log('user saved: \n' + saved_user);
- });
- }
+User
+    .findOne({name:"Johnny Longjohnny_"})
+    .exec(function (err, users) {
+        if (err) return handleError(err);
+        console.log("here's johnny");
+        console.log("current user is " + users);
+        for(album_name in users.album_list){
+            console.log(album_name + " : " + users.album_list[album_name]);
+        }    });
 
-
- test_user.save(function (err, test_user) {
- if (err) return console.error(err);
- console.log("test_user saved!");
- });
-
- */
-
-/*
- bangkok.following.push({ObjectId:['5650e3ccb6e06a680557495a']});
- var subdoc = bangkok.following[0];
- console.log(subdoc) // {  }
- subdoc.isNew; // true
-*/
-
- //mongoose.model('users').find({}, {}).remove(function(err){
-//console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
- //});
