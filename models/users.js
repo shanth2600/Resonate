@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 /*
  var usersSchema = new Schema({
  name: String
@@ -23,6 +24,8 @@ var personSchema = new mongoose.Schema({
         type: [Number], index: '2dsphere'
     },
     following:[{type:mongoose.Schema.Types.ObjectId, ref: 'users'}],
+    followers:[{type:mongoose.Schema.Types.ObjectId, ref: 'users'}],
+
     //followers:[mongoose.Schema.Types.ObjectId]
     //album has albumid and playcount
     /*
@@ -104,10 +107,11 @@ var test_user2 = User({
 test_user2.save();
 var test_user_array = [park, csun, chilis, bangkok];
 
-csun.save();
+//csun.save();
 
 park.following.push(csun);
-park.save();
+//park.save();
+
 
 User
     .find({name:"Park"})

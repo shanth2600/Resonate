@@ -4,32 +4,6 @@ var mongoose = require('mongoose');
 var Chance = require('chance');
 var chance = new Chance();
 
-/*
- //**************change this
- var personSchema= new mongoose.Schema ({
- person_id: mongoose.Schema.Types.ObjectId,
- age: Number,
- name: String,
- gender: String,
- email: String,
- location: {
- coordinates: {type: [Number], index: '2dsphere'}
- },
- //album has albumid and playcount
- /*
- album:[
- { album_id: mongoose.Schema.Types.ObjectId,
- playcount: Int
- }
-
- ],
-
- });
- */
-//*****************
-
-/* GET home page. */
-
 router.get('/', function (req, res, next) {
     mongoose.model('users').find(function (req, users) {
         res.send(users);
@@ -44,19 +18,6 @@ router.delete('/', function (req, res, next) {
 
 });
 
-/*
- router.get('/', function(req, res, next) {
- getAllUsers('users', function(res, retrieved_users){
- console.log("retrieved users: " + retrieved_users);
- res.send(retrieved_users)
- });
- console.log("index");
- res.send("index");
-
- });
-
-
- */
 function getAllUsers(model_name) {
     //not used currently
     var returned_users;
@@ -114,7 +75,7 @@ router.delete('/deleteuserbyname/:username', function (req, res, next) {
 router.get('/finduserbyid/:user_id', function (req, res, next) {
     var userToFind = req.params.user_id;
     mongoose.model('users').find({_id: req.params.user_id}, {}, function (e, docs) {
-        res.json(docs);
+        res.json(docs[0]);
     })
 });
 
@@ -198,6 +159,7 @@ router.get('/getmatch/:user1/:user2', function (req, res, next) {
     });
 });
 
+//TODO need to update match algorithm
 router.get('/getmatches/:user1', function (req, res, next) {
     var user1 = req.params.user1;
     var match_list = [];
@@ -253,7 +215,7 @@ router.get('/getmatches/:user1', function (req, res, next) {
 });
 
 
-function getUsersByProximity(user_id, callback){
+function getUsersByProximity(user_id, callback) {
     var user_model = mongoose.model('users');
     var user1 = user_model.find({_id: user_id}, {}, function (error, current_user) {
         console.log('current user is:\n' + current_user);
@@ -276,7 +238,7 @@ function getUsersByProximity(user_id, callback){
 
 router.get('/getusersbyproximity/:user1', function (req, res, next) {
     var user_id = req.params.user1;
-    getUsersByProximity(user_id, function(err, returned_users){
+    getUsersByProximity(user_id, function (err, returned_users) {
         res.send(returned_users);
 
     });
@@ -315,75 +277,130 @@ router.post('/adduser', function (req, res, next) {
     });
 });
 
-router.post('/addtofollowing', function (req, res, next){
+router.post('/addtofollowing', function (req, res, next) {
     //gets the user ID of the new follower and the person being followed and updates the followed/following lists for each
     var follow_info = req.body;
-    var user_following = follow_info.following;
-    var user_followed = follow_info.followed;
-
-    console.log("new follower is: ")
-});
-
-router.get('/seeder', function (req, res, next){
-    mongoose.model('users').find({}, {}).remove(function(err){
-        console.log((err === null) ? {msg: 'no problems deleting everything!' } : {msg: 'error ' + err});
-
-    }).exec(function (){
-
-        var personSchema = require('mongoose').model('users').schema;
-        var NewUser = mongoose.model('users', personSchema);
-
-        var i = 0;
-        while (i<3) {
-
-            var new_user = NewUser({
-                age: chance.age(),
-                name: chance.name(),
-                gender: chance.gender(),
-                email: chance.email(),
-                profile_image: chance.url({path: 'images'}),
-                album_list: seedAlbums(),
-                bio: chance.paragraph(),
-                location: [chance.floating({min: -180, max: 180, fixed: 6}),
-                    chance.floating({min: -90, max: 90, fixed: 6})]
-
-            });
-
-            new_user.save(function (err, test_user) {
-                if (err) return console.error(err);
-            });
-            i++;
+    var user_following_id = follow_info.following;
+    var user_followed_id = follow_info.followed;
+    addToFollowing(user_following_id, user_followed_id, function (err, updated_users) {
+        if (err) {
+            //TODO replace with better error handling later
+            res.sendStatus(500);
+        }else {
+            res.sendStatus(200);
         }
-        res.redirect('/');
-
     });
 
-
-
 });
 
-function seedAlbums(){
+function addToFollowing(user_following_id, user_followed_id, callback) {
+    //function that updates the follower/followed lists in the database of two users
+    console.log("user_following_id: " + user_following_id);
+    console.log("user_followed_id: " + user_followed_id);
+    var Users = mongoose.model('users');
+    Users.findById(user_following_id, function (err, user_following) {
+        if (err) {
+            console.log("Error finding: " + user_following_id);
+            callback("Error finding: " + user_following_id);
+            return ("Error finding " + user_following_id);
+        } else {
+            Users.findById(user_followed_id, function (err, user_followed) {
+                if (err) {
+                    console.log("Error finding: " + user_followed_id);
+                    callback("Error finding: " + user_followed_id);
+                    return ("Error finding " + user_followed_id);
+                }
+                else {
+                    if (user_following.following.indexOf(user_followed_id) == -1) {
+                        console.log("user_following: " + user_following_id + "isn't following: " + user_followed_id);
+                        user_following.following.push(user_followed);
+                        user_following.save(function (err) {
+                            if (err) {
+                                console.log("Couldn't save " + user_following + " to the database.");
+                                callback("Couldn't save " + user_following + " to the database.");
+                                return ("Couldn't save " + user_following + " to the database.");
+                            }
+                        });
+                    }
+
+                    if (user_followed.followers.indexOf(user_following_id) == -1) {
+                        console.log("user_followed: " + user_followed_id + "isn't being followed by: " + user_following_id);
+                        user_followed.followers.push(user_following);
+                        user_followed.save(function (err) {
+                            if (err) {
+                                console.log("Couldn't save " + user_followed + " to the database.");
+                                callback("Couldn't save " + user_followed + " to the database.");
+                                return ("Couldn't save " + user_followed + " to the database.");
+                            }
+                        });
+                    }
+                    if (callback) {
+                        callback(null, user_following);
+                    }
+                    //return zero to indicate OK
+                    return (0);
+                }
+            });
+        }
+    });
+}
+
+router.get('/seeder', function (req, res, next) {
+     mongoose.model('users').find({}, {}).remove(function (err) {
+     console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
+
+     }).exec(function () {
+
+    var personSchema = require('mongoose').model('users').schema;
+    var NewUser = mongoose.model('users', personSchema);
+
+    var i = 0;
+    while (i < 3) {
+
+        var new_user = NewUser({
+            age: chance.age(),
+            name: chance.name(),
+            gender: chance.gender(),
+            email: chance.email(),
+            profile_image: chance.url({path: 'images'}),
+            album_list: seedAlbums(),
+            bio: chance.paragraph(),
+            location: [chance.floating({min: -180, max: 180, fixed: 6}),
+                chance.floating({min: -90, max: 90, fixed: 6})]
+
+        });
+        new_user.save(function (err, test_user) {
+            if (err) return console.error(err);
+        });
+        i++;
+    }
+    res.redirect('/');
+
+    });
+});
+
+function seedAlbums() {
     console.log("Length is " + Object.keys(seed_albums).length);
 
-    var number_of_albums = Math.floor(Math.random()*25 + 3);
+    var number_of_albums = Math.floor(Math.random() * 25 + 3);
     var new_album_list = {};
     var new_album_name;
     var new_album_artist_name;
     var album_index;
     var matched_album = [];
     console.log("Number of albums: " + number_of_albums);
-    for(var j = 0; j<number_of_albums; j++){
-        if (Math.floor(Math.random()*100) >= 80){
-            album_index = Math.floor(Math.random()*Object.keys(itunes_albums).length);
+    for (var j = 0; j < number_of_albums; j++) {
+        if (Math.floor(Math.random() * 100) >= 80) {
+            album_index = Math.floor(Math.random() * Object.keys(itunes_albums).length);
             new_album_name = Object.keys(itunes_albums)[album_index];
             new_album_artist_name = itunes_albums[new_album_name];
             new_album_list[new_album_name] = new_album_artist_name;
             matched_album.push(new_album_name);
-           }
-        else{
-            album_index = Math.floor(Math.random()*Object.keys(seed_albums).length);
+        }
+        else {
+            album_index = Math.floor(Math.random() * Object.keys(seed_albums).length);
             new_album_name = Object.keys(seed_albums)[album_index];
-            new_album_artist_name =seed_albums[new_album_name];
+            new_album_artist_name = seed_albums[new_album_name];
             new_album_list[new_album_name] = new_album_artist_name;
         }
     }
@@ -395,11 +412,11 @@ function seedAlbums(){
 
 }
 
-router.get('/cleardb', function (req, res, next){
-    mongoose.model('users').find({}, {}).remove(function(err){
-        console.log((err === null) ? {msg: 'no problems deleting everything!' } : {msg: 'error ' + err});
+router.get('/cleardb', function (req, res, next) {
+    mongoose.model('users').find({}, {}).remove(function (err) {
+        console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
 
-    }).exec(function (){
+    }).exec(function () {
         res.redirect('/');
     });
 });
