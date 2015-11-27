@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');//was below
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,8 +6,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 var routes = require('./routes/index');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose'); former spot of var mongoose
 var fs = require('fs');
 // var users = require('./routes/users');
 
@@ -27,14 +30,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb://localhost/local');
 
 app.use('/', routes);
-// app.use('/users', users);
+// app.use('/users', users)g;
 
 //load all files in models dir
+var models_path = __dirname + '/app/models'
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
   if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
 });
 
-
+/*
+ fs.readdirSync(__dirname + '/models').forEach(function(filename) {
+ if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+ });
+ */
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
