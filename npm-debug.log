@@ -1,0 +1,986 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/home/res/shared/Resonate/Resonate',
+5 verbose install   [ 'body-parser',
+5 verbose install     'cookie-parser',
+5 verbose install     'debug',
+5 verbose install     'express',
+5 verbose install     'jade',
+5 verbose install     'mongoose',
+5 verbose install     'morgan',
+5 verbose install     'serve-favicon',
+5 verbose install     'ssl-root-cas' ] ]
+6 info preinstall resonate@0.0.0
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping debug@~2.2.0 /home/res/shared/Resonate/Resonate
+9 verbose already installed skipping body-parser@~1.13.2 /home/res/shared/Resonate/Resonate
+10 verbose already installed skipping cookie-parser@~1.3.5 /home/res/shared/Resonate/Resonate
+11 verbose already installed skipping express@~4.13.1 /home/res/shared/Resonate/Resonate
+12 verbose already installed skipping jade@~1.11.0 /home/res/shared/Resonate/Resonate
+13 verbose already installed skipping mongoose@^4.2.4 /home/res/shared/Resonate/Resonate
+14 verbose already installed skipping morgan@~1.6.1 /home/res/shared/Resonate/Resonate
+15 verbose already installed skipping serve-favicon@~2.3.0 /home/res/shared/Resonate/Resonate
+16 verbose already installed skipping ssl-root-cas@^1.1.10 /home/res/shared/Resonate/Resonate
+17 silly resolved []
+18 info build /home/res/shared/Resonate/Resonate
+19 verbose linkStuff [ false, false, false, '/home/res/shared/Resonate' ]
+20 info linkStuff resonate@0.0.0
+21 verbose linkBins resonate@0.0.0
+22 verbose linkMans resonate@0.0.0
+23 verbose rebuildBundles resonate@0.0.0
+24 verbose rebuildBundles [ '.bin',
+24 verbose rebuildBundles   'abbrev',
+24 verbose rebuildBundles   'ansi-green',
+24 verbose rebuildBundles   'ansi-regex',
+24 verbose rebuildBundles   'ansi-styles',
+24 verbose rebuildBundles   'ansi-wrap',
+24 verbose rebuildBundles   'anymatch',
+24 verbose rebuildBundles   'arr-diff',
+24 verbose rebuildBundles   'arr-flatten',
+24 verbose rebuildBundles   'array-slice',
+24 verbose rebuildBundles   'array-unique',
+24 verbose rebuildBundles   'arrify',
+24 verbose rebuildBundles   'async-each',
+24 verbose rebuildBundles   'balanced-match',
+24 verbose rebuildBundles   'binary-extensions',
+24 verbose rebuildBundles   'body-parser',
+24 verbose rebuildBundles   'brace-expansion',
+24 verbose rebuildBundles   'braces',
+24 verbose rebuildBundles   'chalk',
+24 verbose rebuildBundles   'chance',
+24 verbose rebuildBundles   'chokidar',
+24 verbose rebuildBundles   'concat-map',
+24 verbose rebuildBundles   'configstore',
+24 verbose rebuildBundles   'cookie-parser',
+24 verbose rebuildBundles   'core-util-is',
+24 verbose rebuildBundles   'debug',
+24 verbose rebuildBundles   'deep-extend',
+24 verbose rebuildBundles   'duplexer',
+24 verbose rebuildBundles   'duplexify',
+24 verbose rebuildBundles   'end-of-stream',
+24 verbose rebuildBundles   'es6-promise',
+24 verbose rebuildBundles   'escape-string-regexp',
+24 verbose rebuildBundles   'event-stream',
+24 verbose rebuildBundles   'expand-brackets',
+24 verbose rebuildBundles   'expand-range',
+24 verbose rebuildBundles   'express',
+24 verbose rebuildBundles   'extglob',
+24 verbose rebuildBundles   'faker',
+24 verbose rebuildBundles   'filename-regex',
+24 verbose rebuildBundles   'fill-range',
+24 verbose rebuildBundles   'for-in',
+24 verbose rebuildBundles   'for-own',
+24 verbose rebuildBundles   'from',
+24 verbose rebuildBundles   'glob-base',
+24 verbose rebuildBundles   'glob-parent',
+24 verbose rebuildBundles   'got',
+24 verbose rebuildBundles   'graceful-fs',
+24 verbose rebuildBundles   'has-ansi',
+24 verbose rebuildBundles   'infinity-agent',
+24 verbose rebuildBundles   'inherits',
+24 verbose rebuildBundles   'ini',
+24 verbose rebuildBundles   'is-binary-path',
+24 verbose rebuildBundles   'is-dotfile',
+24 verbose rebuildBundles   'is-equal-shallow',
+24 verbose rebuildBundles   'is-extglob',
+24 verbose rebuildBundles   'is-finite',
+24 verbose rebuildBundles   'is-glob',
+24 verbose rebuildBundles   'is-npm',
+24 verbose rebuildBundles   'is-number',
+24 verbose rebuildBundles   'is-primitive',
+24 verbose rebuildBundles   'is-redirect',
+24 verbose rebuildBundles   'is-stream',
+24 verbose rebuildBundles   'isarray',
+24 verbose rebuildBundles   'isobject',
+24 verbose rebuildBundles   'jade',
+24 verbose rebuildBundles   'kind-of',
+24 verbose rebuildBundles   'latest-version',
+24 verbose rebuildBundles   'lazy-cache',
+24 verbose rebuildBundles   'lodash._baseassign',
+24 verbose rebuildBundles   'lodash._basecopy',
+24 verbose rebuildBundles   'lodash._baseflatten',
+24 verbose rebuildBundles   'lodash._bindcallback',
+24 verbose rebuildBundles   'lodash._createassigner',
+24 verbose rebuildBundles   'lodash._getnative',
+24 verbose rebuildBundles   'lodash._isiterateecall',
+24 verbose rebuildBundles   'lodash.assign',
+24 verbose rebuildBundles   'lodash.defaults',
+24 verbose rebuildBundles   'lodash.flatten',
+24 verbose rebuildBundles   'lodash.isarguments',
+24 verbose rebuildBundles   'lodash.isarray',
+24 verbose rebuildBundles   'lodash.keys',
+24 verbose rebuildBundles   'lodash.restparam',
+24 verbose rebuildBundles   'lowercase-keys',
+24 verbose rebuildBundles   'map-stream',
+24 verbose rebuildBundles   'micromatch',
+24 verbose rebuildBundles   'minimatch',
+24 verbose rebuildBundles   'minimist',
+24 verbose rebuildBundles   'mkdirp',
+24 verbose rebuildBundles   'mongoose',
+24 verbose rebuildBundles   'morgan',
+24 verbose rebuildBundles   'ms',
+24 verbose rebuildBundles   'nested-error-stacks',
+24 verbose rebuildBundles   'nodemon',
+24 verbose rebuildBundles   'nopt',
+24 verbose rebuildBundles   'number-is-nan',
+24 verbose rebuildBundles   'object-assign',
+24 verbose rebuildBundles   'object.omit',
+24 verbose rebuildBundles   'once',
+24 verbose rebuildBundles   'os-homedir',
+24 verbose rebuildBundles   'os-tmpdir',
+24 verbose rebuildBundles   'osenv',
+24 verbose rebuildBundles   'package-json',
+24 verbose rebuildBundles   'parse-glob',
+24 verbose rebuildBundles   'path-is-absolute',
+24 verbose rebuildBundles   'pause-stream',
+24 verbose rebuildBundles   'pinkie',
+24 verbose rebuildBundles   'pinkie-promise',
+24 verbose rebuildBundles   'prepend-http',
+24 verbose rebuildBundles   'preserve',
+24 verbose rebuildBundles   'process-nextick-args',
+24 verbose rebuildBundles   'ps-tree',
+24 verbose rebuildBundles   'randomatic',
+24 verbose rebuildBundles   'rc',
+24 verbose rebuildBundles   'read-all-stream',
+24 verbose rebuildBundles   'readable-stream',
+24 verbose rebuildBundles   'readdirp',
+24 verbose rebuildBundles   'regex-cache',
+24 verbose rebuildBundles   'registry-url',
+24 verbose rebuildBundles   'repeat-element',
+24 verbose rebuildBundles   'repeat-string',
+24 verbose rebuildBundles   'repeating',
+24 verbose rebuildBundles   'semver',
+24 verbose rebuildBundles   'semver-diff',
+24 verbose rebuildBundles   'serve-favicon',
+24 verbose rebuildBundles   'slide',
+24 verbose rebuildBundles   'split',
+24 verbose rebuildBundles   'ssl-root-cas',
+24 verbose rebuildBundles   'stream-combiner',
+24 verbose rebuildBundles   'string-length',
+24 verbose rebuildBundles   'string_decoder',
+24 verbose rebuildBundles   'strip-ansi',
+24 verbose rebuildBundles   'strip-json-comments',
+24 verbose rebuildBundles   'success-symbol',
+24 verbose rebuildBundles   'supports-color',
+24 verbose rebuildBundles   'through',
+24 verbose rebuildBundles   'timed-out',
+24 verbose rebuildBundles   'touch',
+24 verbose rebuildBundles   'undefsafe',
+24 verbose rebuildBundles   'update-notifier',
+24 verbose rebuildBundles   'util-deprecate',
+24 verbose rebuildBundles   'uuid',
+24 verbose rebuildBundles   'wrappy',
+24 verbose rebuildBundles   'write-file-atomic',
+24 verbose rebuildBundles   'xdg-basedir' ]
+25 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/abbrev
+26 info build /home/res/shared/Resonate/Resonate/node_modules/abbrev
+27 info preinstall abbrev@1.0.7
+28 verbose linkStuff [ false,
+28 verbose linkStuff   false,
+28 verbose linkStuff   false,
+28 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+29 info linkStuff abbrev@1.0.7
+30 verbose linkBins abbrev@1.0.7
+31 verbose linkMans abbrev@1.0.7
+32 verbose rebuildBundles abbrev@1.0.7
+33 info install abbrev@1.0.7
+34 info postinstall abbrev@1.0.7
+35 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/ansi-green
+36 info build /home/res/shared/Resonate/Resonate/node_modules/ansi-green
+37 info preinstall ansi-green@0.1.1
+38 verbose linkStuff [ false,
+38 verbose linkStuff   false,
+38 verbose linkStuff   false,
+38 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+39 info linkStuff ansi-green@0.1.1
+40 verbose linkBins ansi-green@0.1.1
+41 verbose linkMans ansi-green@0.1.1
+42 verbose rebuildBundles ansi-green@0.1.1
+43 info install ansi-green@0.1.1
+44 info postinstall ansi-green@0.1.1
+45 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/ansi-regex
+46 info build /home/res/shared/Resonate/Resonate/node_modules/ansi-regex
+47 info preinstall ansi-regex@2.0.0
+48 verbose linkStuff [ false,
+48 verbose linkStuff   false,
+48 verbose linkStuff   false,
+48 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+49 info linkStuff ansi-regex@2.0.0
+50 verbose linkBins ansi-regex@2.0.0
+51 verbose linkMans ansi-regex@2.0.0
+52 verbose rebuildBundles ansi-regex@2.0.0
+53 info install ansi-regex@2.0.0
+54 info postinstall ansi-regex@2.0.0
+55 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/ansi-styles
+56 info build /home/res/shared/Resonate/Resonate/node_modules/ansi-styles
+57 info preinstall ansi-styles@2.1.0
+58 verbose linkStuff [ false,
+58 verbose linkStuff   false,
+58 verbose linkStuff   false,
+58 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+59 info linkStuff ansi-styles@2.1.0
+60 verbose linkBins ansi-styles@2.1.0
+61 verbose linkMans ansi-styles@2.1.0
+62 verbose rebuildBundles ansi-styles@2.1.0
+63 info install ansi-styles@2.1.0
+64 info postinstall ansi-styles@2.1.0
+65 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/ansi-wrap
+66 info build /home/res/shared/Resonate/Resonate/node_modules/ansi-wrap
+67 info preinstall ansi-wrap@0.1.0
+68 verbose linkStuff [ false,
+68 verbose linkStuff   false,
+68 verbose linkStuff   false,
+68 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+69 info linkStuff ansi-wrap@0.1.0
+70 verbose linkBins ansi-wrap@0.1.0
+71 verbose linkMans ansi-wrap@0.1.0
+72 verbose rebuildBundles ansi-wrap@0.1.0
+73 info install ansi-wrap@0.1.0
+74 info postinstall ansi-wrap@0.1.0
+75 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/anymatch
+76 info build /home/res/shared/Resonate/Resonate/node_modules/anymatch
+77 info preinstall anymatch@1.3.0
+78 verbose linkStuff [ false,
+78 verbose linkStuff   false,
+78 verbose linkStuff   false,
+78 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+79 info linkStuff anymatch@1.3.0
+80 verbose linkBins anymatch@1.3.0
+81 verbose linkMans anymatch@1.3.0
+82 verbose rebuildBundles anymatch@1.3.0
+83 info install anymatch@1.3.0
+84 info postinstall anymatch@1.3.0
+85 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/arr-diff
+86 info build /home/res/shared/Resonate/Resonate/node_modules/arr-diff
+87 info preinstall arr-diff@1.1.0
+88 verbose linkStuff [ false,
+88 verbose linkStuff   false,
+88 verbose linkStuff   false,
+88 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+89 info linkStuff arr-diff@1.1.0
+90 verbose linkBins arr-diff@1.1.0
+91 verbose linkMans arr-diff@1.1.0
+92 verbose rebuildBundles arr-diff@1.1.0
+93 info install arr-diff@1.1.0
+94 info postinstall arr-diff@1.1.0
+95 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/arr-flatten
+96 info build /home/res/shared/Resonate/Resonate/node_modules/arr-flatten
+97 info preinstall arr-flatten@1.0.1
+98 verbose linkStuff [ false,
+98 verbose linkStuff   false,
+98 verbose linkStuff   false,
+98 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+99 info linkStuff arr-flatten@1.0.1
+100 verbose linkBins arr-flatten@1.0.1
+101 verbose linkMans arr-flatten@1.0.1
+102 verbose rebuildBundles arr-flatten@1.0.1
+103 info install arr-flatten@1.0.1
+104 info postinstall arr-flatten@1.0.1
+105 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/array-slice
+106 info build /home/res/shared/Resonate/Resonate/node_modules/array-slice
+107 info preinstall array-slice@0.2.3
+108 verbose linkStuff [ false,
+108 verbose linkStuff   false,
+108 verbose linkStuff   false,
+108 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+109 info linkStuff array-slice@0.2.3
+110 verbose linkBins array-slice@0.2.3
+111 verbose linkMans array-slice@0.2.3
+112 verbose rebuildBundles array-slice@0.2.3
+113 info install array-slice@0.2.3
+114 info postinstall array-slice@0.2.3
+115 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/array-unique
+116 info build /home/res/shared/Resonate/Resonate/node_modules/array-unique
+117 info preinstall array-unique@0.2.1
+118 verbose linkStuff [ false,
+118 verbose linkStuff   false,
+118 verbose linkStuff   false,
+118 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+119 info linkStuff array-unique@0.2.1
+120 verbose linkBins array-unique@0.2.1
+121 verbose linkMans array-unique@0.2.1
+122 verbose rebuildBundles array-unique@0.2.1
+123 info install array-unique@0.2.1
+124 info postinstall array-unique@0.2.1
+125 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/arrify
+126 info build /home/res/shared/Resonate/Resonate/node_modules/arrify
+127 info preinstall arrify@1.0.0
+128 verbose linkStuff [ false,
+128 verbose linkStuff   false,
+128 verbose linkStuff   false,
+128 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+129 info linkStuff arrify@1.0.0
+130 verbose linkBins arrify@1.0.0
+131 verbose linkMans arrify@1.0.0
+132 verbose rebuildBundles arrify@1.0.0
+133 info install arrify@1.0.0
+134 info postinstall arrify@1.0.0
+135 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/async-each
+136 info build /home/res/shared/Resonate/Resonate/node_modules/async-each
+137 info preinstall async-each@0.1.6
+138 verbose linkStuff [ false,
+138 verbose linkStuff   false,
+138 verbose linkStuff   false,
+138 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+139 info linkStuff async-each@0.1.6
+140 verbose linkBins async-each@0.1.6
+141 verbose linkMans async-each@0.1.6
+142 verbose rebuildBundles async-each@0.1.6
+143 info install async-each@0.1.6
+144 info postinstall async-each@0.1.6
+145 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/balanced-match
+146 info build /home/res/shared/Resonate/Resonate/node_modules/balanced-match
+147 info preinstall balanced-match@0.2.1
+148 verbose linkStuff [ false,
+148 verbose linkStuff   false,
+148 verbose linkStuff   false,
+148 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+149 info linkStuff balanced-match@0.2.1
+150 verbose linkBins balanced-match@0.2.1
+151 verbose linkMans balanced-match@0.2.1
+152 verbose rebuildBundles balanced-match@0.2.1
+153 info install balanced-match@0.2.1
+154 info postinstall balanced-match@0.2.1
+155 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/binary-extensions
+156 info build /home/res/shared/Resonate/Resonate/node_modules/binary-extensions
+157 info preinstall binary-extensions@1.3.1
+158 verbose linkStuff [ false,
+158 verbose linkStuff   false,
+158 verbose linkStuff   false,
+158 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+159 info linkStuff binary-extensions@1.3.1
+160 verbose linkBins binary-extensions@1.3.1
+161 verbose linkMans binary-extensions@1.3.1
+162 verbose rebuildBundles binary-extensions@1.3.1
+163 info install binary-extensions@1.3.1
+164 info postinstall binary-extensions@1.3.1
+165 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/brace-expansion
+166 info build /home/res/shared/Resonate/Resonate/node_modules/brace-expansion
+167 info preinstall brace-expansion@1.1.1
+168 verbose linkStuff [ false,
+168 verbose linkStuff   false,
+168 verbose linkStuff   false,
+168 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+169 info linkStuff brace-expansion@1.1.1
+170 verbose linkBins brace-expansion@1.1.1
+171 verbose linkMans brace-expansion@1.1.1
+172 verbose rebuildBundles brace-expansion@1.1.1
+173 info install brace-expansion@1.1.1
+174 info postinstall brace-expansion@1.1.1
+175 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/braces
+176 info build /home/res/shared/Resonate/Resonate/node_modules/braces
+177 info preinstall braces@1.8.2
+178 verbose linkStuff [ false,
+178 verbose linkStuff   false,
+178 verbose linkStuff   false,
+178 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+179 info linkStuff braces@1.8.2
+180 verbose linkBins braces@1.8.2
+181 verbose linkMans braces@1.8.2
+182 verbose rebuildBundles braces@1.8.2
+183 info install braces@1.8.2
+184 info postinstall braces@1.8.2
+185 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/chalk
+186 info build /home/res/shared/Resonate/Resonate/node_modules/chalk
+187 info preinstall chalk@1.1.1
+188 verbose linkStuff [ false,
+188 verbose linkStuff   false,
+188 verbose linkStuff   false,
+188 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+189 info linkStuff chalk@1.1.1
+190 verbose linkBins chalk@1.1.1
+191 verbose linkMans chalk@1.1.1
+192 verbose rebuildBundles chalk@1.1.1
+193 info install chalk@1.1.1
+194 info postinstall chalk@1.1.1
+195 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/chance
+196 info build /home/res/shared/Resonate/Resonate/node_modules/chance
+197 info preinstall chance@0.8.0
+198 verbose linkStuff [ false,
+198 verbose linkStuff   false,
+198 verbose linkStuff   false,
+198 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+199 info linkStuff chance@0.8.0
+200 verbose linkBins chance@0.8.0
+201 verbose linkMans chance@0.8.0
+202 verbose rebuildBundles chance@0.8.0
+203 info install chance@0.8.0
+204 info postinstall chance@0.8.0
+205 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/chokidar
+206 info build /home/res/shared/Resonate/Resonate/node_modules/chokidar
+207 info preinstall chokidar@1.2.0
+208 verbose linkStuff [ false,
+208 verbose linkStuff   false,
+208 verbose linkStuff   false,
+208 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+209 info linkStuff chokidar@1.2.0
+210 verbose linkBins chokidar@1.2.0
+211 verbose linkMans chokidar@1.2.0
+212 verbose rebuildBundles chokidar@1.2.0
+213 info install chokidar@1.2.0
+214 info postinstall chokidar@1.2.0
+215 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/concat-map
+216 info build /home/res/shared/Resonate/Resonate/node_modules/concat-map
+217 info preinstall concat-map@0.0.1
+218 verbose linkStuff [ false,
+218 verbose linkStuff   false,
+218 verbose linkStuff   false,
+218 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+219 info linkStuff concat-map@0.0.1
+220 verbose linkBins concat-map@0.0.1
+221 verbose linkMans concat-map@0.0.1
+222 verbose rebuildBundles concat-map@0.0.1
+223 info install concat-map@0.0.1
+224 info postinstall concat-map@0.0.1
+225 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/configstore
+226 info build /home/res/shared/Resonate/Resonate/node_modules/configstore
+227 info preinstall configstore@1.3.0
+228 verbose linkStuff [ false,
+228 verbose linkStuff   false,
+228 verbose linkStuff   false,
+228 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+229 info linkStuff configstore@1.3.0
+230 verbose linkBins configstore@1.3.0
+231 verbose linkMans configstore@1.3.0
+232 verbose rebuildBundles configstore@1.3.0
+233 info install configstore@1.3.0
+234 info postinstall configstore@1.3.0
+235 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/core-util-is
+236 info build /home/res/shared/Resonate/Resonate/node_modules/core-util-is
+237 info preinstall core-util-is@1.0.1
+238 verbose linkStuff [ false,
+238 verbose linkStuff   false,
+238 verbose linkStuff   false,
+238 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+239 info linkStuff core-util-is@1.0.1
+240 verbose linkBins core-util-is@1.0.1
+241 verbose linkMans core-util-is@1.0.1
+242 verbose rebuildBundles core-util-is@1.0.1
+243 info install core-util-is@1.0.1
+244 info postinstall core-util-is@1.0.1
+245 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/deep-extend
+246 info build /home/res/shared/Resonate/Resonate/node_modules/deep-extend
+247 info preinstall deep-extend@0.4.0
+248 verbose linkStuff [ false,
+248 verbose linkStuff   false,
+248 verbose linkStuff   false,
+248 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+249 info linkStuff deep-extend@0.4.0
+250 verbose linkBins deep-extend@0.4.0
+251 verbose linkMans deep-extend@0.4.0
+252 verbose rebuildBundles deep-extend@0.4.0
+253 info install deep-extend@0.4.0
+254 info postinstall deep-extend@0.4.0
+255 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/duplexer
+256 info build /home/res/shared/Resonate/Resonate/node_modules/duplexer
+257 info preinstall duplexer@0.1.1
+258 verbose linkStuff [ false,
+258 verbose linkStuff   false,
+258 verbose linkStuff   false,
+258 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+259 info linkStuff duplexer@0.1.1
+260 verbose linkBins duplexer@0.1.1
+261 verbose linkMans duplexer@0.1.1
+262 verbose rebuildBundles duplexer@0.1.1
+263 info install duplexer@0.1.1
+264 info postinstall duplexer@0.1.1
+265 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/duplexify
+266 info build /home/res/shared/Resonate/Resonate/node_modules/duplexify
+267 info preinstall duplexify@3.4.2
+268 verbose linkStuff [ false,
+268 verbose linkStuff   false,
+268 verbose linkStuff   false,
+268 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+269 info linkStuff duplexify@3.4.2
+270 verbose linkBins duplexify@3.4.2
+271 verbose linkMans duplexify@3.4.2
+272 verbose rebuildBundles duplexify@3.4.2
+273 info install duplexify@3.4.2
+274 info postinstall duplexify@3.4.2
+275 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/end-of-stream
+276 info build /home/res/shared/Resonate/Resonate/node_modules/end-of-stream
+277 info preinstall end-of-stream@1.0.0
+278 verbose linkStuff [ false,
+278 verbose linkStuff   false,
+278 verbose linkStuff   false,
+278 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+279 info linkStuff end-of-stream@1.0.0
+280 verbose linkBins end-of-stream@1.0.0
+281 verbose linkMans end-of-stream@1.0.0
+282 verbose rebuildBundles end-of-stream@1.0.0
+283 info install end-of-stream@1.0.0
+284 info postinstall end-of-stream@1.0.0
+285 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/es6-promise
+286 info build /home/res/shared/Resonate/Resonate/node_modules/es6-promise
+287 info preinstall es6-promise@3.0.2
+288 verbose linkStuff [ false,
+288 verbose linkStuff   false,
+288 verbose linkStuff   false,
+288 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+289 info linkStuff es6-promise@3.0.2
+290 verbose linkBins es6-promise@3.0.2
+291 verbose linkMans es6-promise@3.0.2
+292 verbose rebuildBundles es6-promise@3.0.2
+293 info install es6-promise@3.0.2
+294 info postinstall es6-promise@3.0.2
+295 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/escape-string-regexp
+296 info build /home/res/shared/Resonate/Resonate/node_modules/escape-string-regexp
+297 info preinstall escape-string-regexp@1.0.3
+298 verbose linkStuff [ false,
+298 verbose linkStuff   false,
+298 verbose linkStuff   false,
+298 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+299 info linkStuff escape-string-regexp@1.0.3
+300 verbose linkBins escape-string-regexp@1.0.3
+301 verbose linkMans escape-string-regexp@1.0.3
+302 verbose rebuildBundles escape-string-regexp@1.0.3
+303 info install escape-string-regexp@1.0.3
+304 info postinstall escape-string-regexp@1.0.3
+305 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/event-stream
+306 info build /home/res/shared/Resonate/Resonate/node_modules/event-stream
+307 info preinstall event-stream@3.3.2
+308 verbose linkStuff [ false,
+308 verbose linkStuff   false,
+308 verbose linkStuff   false,
+308 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+309 info linkStuff event-stream@3.3.2
+310 verbose linkBins event-stream@3.3.2
+311 verbose linkMans event-stream@3.3.2
+312 verbose rebuildBundles event-stream@3.3.2
+313 info install event-stream@3.3.2
+314 info postinstall event-stream@3.3.2
+315 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/expand-brackets
+316 info build /home/res/shared/Resonate/Resonate/node_modules/expand-brackets
+317 info preinstall expand-brackets@0.1.4
+318 verbose linkStuff [ false,
+318 verbose linkStuff   false,
+318 verbose linkStuff   false,
+318 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+319 info linkStuff expand-brackets@0.1.4
+320 verbose linkBins expand-brackets@0.1.4
+321 verbose linkMans expand-brackets@0.1.4
+322 verbose rebuildBundles expand-brackets@0.1.4
+323 info install expand-brackets@0.1.4
+324 info postinstall expand-brackets@0.1.4
+325 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/expand-range
+326 info build /home/res/shared/Resonate/Resonate/node_modules/expand-range
+327 info preinstall expand-range@1.8.1
+328 verbose linkStuff [ false,
+328 verbose linkStuff   false,
+328 verbose linkStuff   false,
+328 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+329 info linkStuff expand-range@1.8.1
+330 verbose linkBins expand-range@1.8.1
+331 verbose linkMans expand-range@1.8.1
+332 verbose rebuildBundles expand-range@1.8.1
+333 info install expand-range@1.8.1
+334 info postinstall expand-range@1.8.1
+335 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/extglob
+336 info build /home/res/shared/Resonate/Resonate/node_modules/extglob
+337 info preinstall extglob@0.3.1
+338 verbose linkStuff [ false,
+338 verbose linkStuff   false,
+338 verbose linkStuff   false,
+338 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+339 info linkStuff extglob@0.3.1
+340 verbose linkBins extglob@0.3.1
+341 verbose linkMans extglob@0.3.1
+342 verbose rebuildBundles extglob@0.3.1
+343 info install extglob@0.3.1
+344 info postinstall extglob@0.3.1
+345 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/faker
+346 info build /home/res/shared/Resonate/Resonate/node_modules/faker
+347 info preinstall faker@3.0.1
+348 verbose linkStuff [ false,
+348 verbose linkStuff   false,
+348 verbose linkStuff   false,
+348 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+349 info linkStuff faker@3.0.1
+350 verbose linkBins faker@3.0.1
+351 verbose linkMans faker@3.0.1
+352 verbose rebuildBundles faker@3.0.1
+353 info install faker@3.0.1
+354 info postinstall faker@3.0.1
+355 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/filename-regex
+356 info build /home/res/shared/Resonate/Resonate/node_modules/filename-regex
+357 info preinstall filename-regex@2.0.0
+358 verbose linkStuff [ false,
+358 verbose linkStuff   false,
+358 verbose linkStuff   false,
+358 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+359 info linkStuff filename-regex@2.0.0
+360 verbose linkBins filename-regex@2.0.0
+361 verbose linkMans filename-regex@2.0.0
+362 verbose rebuildBundles filename-regex@2.0.0
+363 info install filename-regex@2.0.0
+364 info postinstall filename-regex@2.0.0
+365 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/fill-range
+366 info build /home/res/shared/Resonate/Resonate/node_modules/fill-range
+367 info preinstall fill-range@2.2.2
+368 verbose linkStuff [ false,
+368 verbose linkStuff   false,
+368 verbose linkStuff   false,
+368 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+369 info linkStuff fill-range@2.2.2
+370 verbose linkBins fill-range@2.2.2
+371 verbose linkMans fill-range@2.2.2
+372 verbose rebuildBundles fill-range@2.2.2
+373 info install fill-range@2.2.2
+374 info postinstall fill-range@2.2.2
+375 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/for-in
+376 info build /home/res/shared/Resonate/Resonate/node_modules/for-in
+377 info preinstall for-in@0.1.4
+378 verbose linkStuff [ false,
+378 verbose linkStuff   false,
+378 verbose linkStuff   false,
+378 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+379 info linkStuff for-in@0.1.4
+380 verbose linkBins for-in@0.1.4
+381 verbose linkMans for-in@0.1.4
+382 verbose rebuildBundles for-in@0.1.4
+383 info install for-in@0.1.4
+384 info postinstall for-in@0.1.4
+385 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/for-own
+386 info build /home/res/shared/Resonate/Resonate/node_modules/for-own
+387 info preinstall for-own@0.1.3
+388 verbose linkStuff [ false,
+388 verbose linkStuff   false,
+388 verbose linkStuff   false,
+388 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+389 info linkStuff for-own@0.1.3
+390 verbose linkBins for-own@0.1.3
+391 verbose linkMans for-own@0.1.3
+392 verbose rebuildBundles for-own@0.1.3
+393 info install for-own@0.1.3
+394 info postinstall for-own@0.1.3
+395 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/from
+396 info build /home/res/shared/Resonate/Resonate/node_modules/from
+397 info preinstall from@0.1.3
+398 verbose linkStuff [ false,
+398 verbose linkStuff   false,
+398 verbose linkStuff   false,
+398 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+399 info linkStuff from@0.1.3
+400 verbose linkBins from@0.1.3
+401 verbose linkMans from@0.1.3
+402 verbose rebuildBundles from@0.1.3
+403 info install from@0.1.3
+404 info postinstall from@0.1.3
+405 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/glob-base
+406 info build /home/res/shared/Resonate/Resonate/node_modules/glob-base
+407 info preinstall glob-base@0.3.0
+408 verbose linkStuff [ false,
+408 verbose linkStuff   false,
+408 verbose linkStuff   false,
+408 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+409 info linkStuff glob-base@0.3.0
+410 verbose linkBins glob-base@0.3.0
+411 verbose linkMans glob-base@0.3.0
+412 verbose rebuildBundles glob-base@0.3.0
+413 info install glob-base@0.3.0
+414 info postinstall glob-base@0.3.0
+415 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/glob-parent
+416 info build /home/res/shared/Resonate/Resonate/node_modules/glob-parent
+417 info preinstall glob-parent@2.0.0
+418 verbose linkStuff [ false,
+418 verbose linkStuff   false,
+418 verbose linkStuff   false,
+418 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+419 info linkStuff glob-parent@2.0.0
+420 verbose linkBins glob-parent@2.0.0
+421 verbose linkMans glob-parent@2.0.0
+422 verbose rebuildBundles glob-parent@2.0.0
+423 info install glob-parent@2.0.0
+424 info postinstall glob-parent@2.0.0
+425 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/got
+426 info build /home/res/shared/Resonate/Resonate/node_modules/got
+427 info preinstall got@3.3.1
+428 verbose linkStuff [ false,
+428 verbose linkStuff   false,
+428 verbose linkStuff   false,
+428 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+429 info linkStuff got@3.3.1
+430 verbose linkBins got@3.3.1
+431 verbose linkMans got@3.3.1
+432 verbose rebuildBundles got@3.3.1
+433 verbose rebuildBundles [ 'object-assign' ]
+434 info install got@3.3.1
+435 info postinstall got@3.3.1
+436 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/graceful-fs
+437 info build /home/res/shared/Resonate/Resonate/node_modules/graceful-fs
+438 info preinstall graceful-fs@4.1.2
+439 verbose linkStuff [ false,
+439 verbose linkStuff   false,
+439 verbose linkStuff   false,
+439 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+440 info linkStuff graceful-fs@4.1.2
+441 verbose linkBins graceful-fs@4.1.2
+442 verbose linkMans graceful-fs@4.1.2
+443 verbose rebuildBundles graceful-fs@4.1.2
+444 info install graceful-fs@4.1.2
+445 info postinstall graceful-fs@4.1.2
+446 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/has-ansi
+447 info build /home/res/shared/Resonate/Resonate/node_modules/has-ansi
+448 info preinstall has-ansi@2.0.0
+449 verbose linkStuff [ false,
+449 verbose linkStuff   false,
+449 verbose linkStuff   false,
+449 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+450 info linkStuff has-ansi@2.0.0
+451 verbose linkBins has-ansi@2.0.0
+452 verbose linkMans has-ansi@2.0.0
+453 verbose rebuildBundles has-ansi@2.0.0
+454 info install has-ansi@2.0.0
+455 info postinstall has-ansi@2.0.0
+456 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/infinity-agent
+457 info build /home/res/shared/Resonate/Resonate/node_modules/infinity-agent
+458 info preinstall infinity-agent@2.0.3
+459 verbose linkStuff [ false,
+459 verbose linkStuff   false,
+459 verbose linkStuff   false,
+459 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+460 info linkStuff infinity-agent@2.0.3
+461 verbose linkBins infinity-agent@2.0.3
+462 verbose linkMans infinity-agent@2.0.3
+463 verbose rebuildBundles infinity-agent@2.0.3
+464 info install infinity-agent@2.0.3
+465 info postinstall infinity-agent@2.0.3
+466 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/inherits
+467 info build /home/res/shared/Resonate/Resonate/node_modules/inherits
+468 info preinstall inherits@2.0.1
+469 verbose linkStuff [ false,
+469 verbose linkStuff   false,
+469 verbose linkStuff   false,
+469 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+470 info linkStuff inherits@2.0.1
+471 verbose linkBins inherits@2.0.1
+472 verbose linkMans inherits@2.0.1
+473 verbose rebuildBundles inherits@2.0.1
+474 info install inherits@2.0.1
+475 info postinstall inherits@2.0.1
+476 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/ini
+477 info build /home/res/shared/Resonate/Resonate/node_modules/ini
+478 info preinstall ini@1.3.4
+479 verbose linkStuff [ false,
+479 verbose linkStuff   false,
+479 verbose linkStuff   false,
+479 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+480 info linkStuff ini@1.3.4
+481 verbose linkBins ini@1.3.4
+482 verbose linkMans ini@1.3.4
+483 verbose rebuildBundles ini@1.3.4
+484 info install ini@1.3.4
+485 info postinstall ini@1.3.4
+486 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-binary-path
+487 info build /home/res/shared/Resonate/Resonate/node_modules/is-binary-path
+488 info preinstall is-binary-path@1.0.1
+489 verbose linkStuff [ false,
+489 verbose linkStuff   false,
+489 verbose linkStuff   false,
+489 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+490 info linkStuff is-binary-path@1.0.1
+491 verbose linkBins is-binary-path@1.0.1
+492 verbose linkMans is-binary-path@1.0.1
+493 verbose rebuildBundles is-binary-path@1.0.1
+494 info install is-binary-path@1.0.1
+495 info postinstall is-binary-path@1.0.1
+496 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-dotfile
+497 info build /home/res/shared/Resonate/Resonate/node_modules/is-dotfile
+498 info preinstall is-dotfile@1.0.2
+499 verbose linkStuff [ false,
+499 verbose linkStuff   false,
+499 verbose linkStuff   false,
+499 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+500 info linkStuff is-dotfile@1.0.2
+501 verbose linkBins is-dotfile@1.0.2
+502 verbose linkMans is-dotfile@1.0.2
+503 verbose rebuildBundles is-dotfile@1.0.2
+504 info install is-dotfile@1.0.2
+505 info postinstall is-dotfile@1.0.2
+506 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-equal-shallow
+507 info build /home/res/shared/Resonate/Resonate/node_modules/is-equal-shallow
+508 info preinstall is-equal-shallow@0.1.3
+509 verbose linkStuff [ false,
+509 verbose linkStuff   false,
+509 verbose linkStuff   false,
+509 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+510 info linkStuff is-equal-shallow@0.1.3
+511 verbose linkBins is-equal-shallow@0.1.3
+512 verbose linkMans is-equal-shallow@0.1.3
+513 verbose rebuildBundles is-equal-shallow@0.1.3
+514 info install is-equal-shallow@0.1.3
+515 info postinstall is-equal-shallow@0.1.3
+516 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-extglob
+517 info build /home/res/shared/Resonate/Resonate/node_modules/is-extglob
+518 info preinstall is-extglob@1.0.0
+519 verbose linkStuff [ false,
+519 verbose linkStuff   false,
+519 verbose linkStuff   false,
+519 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+520 info linkStuff is-extglob@1.0.0
+521 verbose linkBins is-extglob@1.0.0
+522 verbose linkMans is-extglob@1.0.0
+523 verbose rebuildBundles is-extglob@1.0.0
+524 info install is-extglob@1.0.0
+525 info postinstall is-extglob@1.0.0
+526 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-finite
+527 info build /home/res/shared/Resonate/Resonate/node_modules/is-finite
+528 info preinstall is-finite@1.0.1
+529 verbose linkStuff [ false,
+529 verbose linkStuff   false,
+529 verbose linkStuff   false,
+529 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+530 info linkStuff is-finite@1.0.1
+531 verbose linkBins is-finite@1.0.1
+532 verbose linkMans is-finite@1.0.1
+533 verbose rebuildBundles is-finite@1.0.1
+534 info install is-finite@1.0.1
+535 info postinstall is-finite@1.0.1
+536 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-glob
+537 info build /home/res/shared/Resonate/Resonate/node_modules/is-glob
+538 info preinstall is-glob@2.0.1
+539 verbose linkStuff [ false,
+539 verbose linkStuff   false,
+539 verbose linkStuff   false,
+539 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+540 info linkStuff is-glob@2.0.1
+541 verbose linkBins is-glob@2.0.1
+542 verbose linkMans is-glob@2.0.1
+543 verbose rebuildBundles is-glob@2.0.1
+544 info install is-glob@2.0.1
+545 info postinstall is-glob@2.0.1
+546 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-npm
+547 info build /home/res/shared/Resonate/Resonate/node_modules/is-npm
+548 info preinstall is-npm@1.0.0
+549 verbose linkStuff [ false,
+549 verbose linkStuff   false,
+549 verbose linkStuff   false,
+549 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+550 info linkStuff is-npm@1.0.0
+551 verbose linkBins is-npm@1.0.0
+552 verbose linkMans is-npm@1.0.0
+553 verbose rebuildBundles is-npm@1.0.0
+554 info install is-npm@1.0.0
+555 info postinstall is-npm@1.0.0
+556 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-number
+557 info build /home/res/shared/Resonate/Resonate/node_modules/is-number
+558 info preinstall is-number@1.1.2
+559 verbose linkStuff [ false,
+559 verbose linkStuff   false,
+559 verbose linkStuff   false,
+559 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+560 info linkStuff is-number@1.1.2
+561 verbose linkBins is-number@1.1.2
+562 verbose linkMans is-number@1.1.2
+563 verbose rebuildBundles is-number@1.1.2
+564 info install is-number@1.1.2
+565 info postinstall is-number@1.1.2
+566 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-primitive
+567 info build /home/res/shared/Resonate/Resonate/node_modules/is-primitive
+568 info preinstall is-primitive@2.0.0
+569 verbose linkStuff [ false,
+569 verbose linkStuff   false,
+569 verbose linkStuff   false,
+569 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+570 info linkStuff is-primitive@2.0.0
+571 verbose linkBins is-primitive@2.0.0
+572 verbose linkMans is-primitive@2.0.0
+573 verbose rebuildBundles is-primitive@2.0.0
+574 info install is-primitive@2.0.0
+575 info postinstall is-primitive@2.0.0
+576 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-redirect
+577 info build /home/res/shared/Resonate/Resonate/node_modules/is-redirect
+578 info preinstall is-redirect@1.0.0
+579 verbose linkStuff [ false,
+579 verbose linkStuff   false,
+579 verbose linkStuff   false,
+579 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+580 info linkStuff is-redirect@1.0.0
+581 verbose linkBins is-redirect@1.0.0
+582 verbose linkMans is-redirect@1.0.0
+583 verbose rebuildBundles is-redirect@1.0.0
+584 info install is-redirect@1.0.0
+585 info postinstall is-redirect@1.0.0
+586 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/is-stream
+587 info build /home/res/shared/Resonate/Resonate/node_modules/is-stream
+588 info preinstall is-stream@1.0.1
+589 verbose linkStuff [ false,
+589 verbose linkStuff   false,
+589 verbose linkStuff   false,
+589 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+590 info linkStuff is-stream@1.0.1
+591 verbose linkBins is-stream@1.0.1
+592 verbose linkMans is-stream@1.0.1
+593 verbose rebuildBundles is-stream@1.0.1
+594 info install is-stream@1.0.1
+595 info postinstall is-stream@1.0.1
+596 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/isarray
+597 info build /home/res/shared/Resonate/Resonate/node_modules/isarray
+598 info preinstall isarray@0.0.1
+599 verbose linkStuff [ false,
+599 verbose linkStuff   false,
+599 verbose linkStuff   false,
+599 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+600 info linkStuff isarray@0.0.1
+601 verbose linkBins isarray@0.0.1
+602 verbose linkMans isarray@0.0.1
+603 verbose rebuildBundles isarray@0.0.1
+604 info install isarray@0.0.1
+605 info postinstall isarray@0.0.1
+606 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/isobject
+607 info build /home/res/shared/Resonate/Resonate/node_modules/isobject
+608 info preinstall isobject@1.0.2
+609 verbose linkStuff [ false,
+609 verbose linkStuff   false,
+609 verbose linkStuff   false,
+609 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+610 info linkStuff isobject@1.0.2
+611 verbose linkBins isobject@1.0.2
+612 verbose linkMans isobject@1.0.2
+613 verbose rebuildBundles isobject@1.0.2
+614 info install isobject@1.0.2
+615 info postinstall isobject@1.0.2
+616 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/kind-of
+617 info build /home/res/shared/Resonate/Resonate/node_modules/kind-of
+618 info preinstall kind-of@1.1.0
+619 verbose linkStuff [ false,
+619 verbose linkStuff   false,
+619 verbose linkStuff   false,
+619 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+620 info linkStuff kind-of@1.1.0
+621 verbose linkBins kind-of@1.1.0
+622 verbose linkMans kind-of@1.1.0
+623 verbose rebuildBundles kind-of@1.1.0
+624 info install kind-of@1.1.0
+625 info postinstall kind-of@1.1.0
+626 verbose rebuild bundle /home/res/shared/Resonate/Resonate/node_modules/latest-version
+627 info build /home/res/shared/Resonate/Resonate/node_modules/latest-version
+628 info preinstall latest-version@1.0.1
+629 verbose linkStuff [ false,
+629 verbose linkStuff   false,
+629 verbose linkStuff   false,
+629 verbose linkStuff   '/home/res/shared/Resonate/Resonate/node_modules' ]
+630 info linkStuff latest-version@1.0.1
+631 verbose linkBins latest-version@1.0.1
+632 verbose link bins [ { 'latest-version': 'cli.js' },
+632 verbose link bins   '/home/res/shared/Resonate/Resonate/node_modules/.bin',
+632 verbose link bins   false ]
+633 verbose linkMans latest-version@1.0.1
+634 verbose rebuildBundles latest-version@1.0.1
+635 error Error: EROFS, symlink '../latest-version/cli.js'
+636 error If you need help, you may report this log at:
+636 error     <http://github.com/isaacs/npm/issues>
+636 error or email it to:
+636 error     <npm-@googlegroups.com>
+637 error System Linux 3.19.0-25-generic
+638 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+639 error cwd /home/res/shared/Resonate/Resonate
+640 error node -v v0.10.25
+641 error npm -v 1.3.10
+642 error path ../latest-version/cli.js
+643 error code EROFS
+644 error errno 56
+645 verbose exit [ 56, true ]

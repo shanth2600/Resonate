@@ -25,7 +25,7 @@ var personSchema = new mongoose.Schema({
         type: [Number], index: '2dsphere'
     },
     following:[{type:mongoose.Schema.Types.ObjectId, ref: 'users'}],
-    //followers:[mongoose.Schema.Types.ObjectId]
+    followers:[{type:mongoose.Schema.Types.ObjectId, ref: 'users'}],
     //album has albumid and playcount
     /*
      album:[
@@ -35,9 +35,10 @@ var personSchema = new mongoose.Schema({
 
      ],
      */
+    match_count: Number
 });
 
-var users = mongoose.model('users', personSchema);
+var User = mongoose.model('users', personSchema);
 
 
 /*User.save(function (err) {
@@ -51,21 +52,21 @@ var park = new User(
     }
 );
 
-var csun = new users(
+var csun = new User(
     {
         name: "CSUN",
         location: [-118.527178, 34.242349]
     }
 );
 
-var chilis = new users(
+var chilis = new User(
     {
         name: "Chilis",
         location: [-118.5389515, 34.2376345]
     }
 );
 
-var bangkok = new users(
+var bangkok = new User(
     {
         name: "bangkok",
         location: [100.3529104, 13.7251097]
@@ -73,7 +74,7 @@ var bangkok = new users(
 );
 
 
-var test_user = users({
+var test_user = User({
     age: 20,
     name: 'Johnny Longjohnny_10',
     gender: 'Undefined',
@@ -109,6 +110,7 @@ var test_user_array = [park, csun, chilis, bangkok];
 //csun.save();
 
 park.following.push(csun);
+
 //park.save();
 
 

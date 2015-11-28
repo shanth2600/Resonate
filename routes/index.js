@@ -76,15 +76,15 @@ router.delete('/deleteuserbyname/:username', function (req, res, next) {
 router.get('/finduserbyid/:user_id', function (req, res, next) {
     var userToFind = req.params.user_id;
     mongoose.model('users').find({_id: req.params.user_id}, {}, function (e, docs) {
-        res.json(docs[0]);
-    })
+        res.send(docs[0]);
+    });
 });
 
 router.get('/finduserbyname/:username', function (req, res, next) {
     var usersToFind = req.params.username;
     mongoose.model('users').find({name: req.params.username}, {}, function (e, docs) {
-        res.json(docs);
-    })
+        res.send(docs);
+    });
 });
 
 router.post('/adduser', function (req, res, next) {
@@ -161,39 +161,43 @@ router.get('/getmatch/:user1/:user2', function (req, res, next) {
 });
 
 //TODO need to update match algorithm
-router.get('/getmatches/:user1', function (req, res, next) {
-    var user1 = req.params.user1;
+router.get('/getmatches/:user_id', function (req, res, next) {
+    //gets album matches for supplied user ID
+    var user_id = req.params.user_id;
     var match_list = [];
+    var Users = mongoose.model('users');
     console.log('inside getmatch2');
-    mongoose.model('users').find({_id: user1}, {}, function (e, docs1) {
+    Users.findById(user_id, function (err, user) {
         console.log('inside getmatch2-2');
-        var returned_users = docs1;
-        mongoose.model('users').find().where('_id').ne(user1).exec(function (err, docs2) {
+        var returned_users = user;
+        Users.find().where('_id').ne(user_id).exec(function (err, other_users) {
+
             console.log('inside getmatch2-3');
             //console.log('docs 1: ' + docs1);
-            console.log("docs 2: " + docs2);
-            returned_users = returned_users + "\n" + docs2;
+            console.log("other_users: " + other_users);
+            returned_users = returned_users + "\n" + other_users;
 
             var match_count = 0;
             var results_list = "";
-            for (var compared_user = 0; compared_user < docs2.length; compared_user++) {
+            for (var compared_user = 0; compared_user < other_users.length; compared_user++) {
 
                 //find matches between two user's album lists
-                for (var i = 0; i < docs1[0].album_list.length; i++) {
-                    if (docs2[compared_user].album_list.indexOf(docs1[0].album_list[i]) === -1) {
-                        console.log('album: ' + docs1[0].album_list[i] + ' does not exist in user B\'s album_list: ' + docs2[compared_user].album_list + '\n');
-                    } else {
-                        console.log('album: ' + docs1[0].album_list[i] + ' is also in user B\'s album_list: ' + docs2[compared_user].album_list + '\n');
-
+                for (user_key in user.album_list){
+                    if(user_key in other_users[compared_user].album_list){
+                        //we have a match
+                        console.log('album: ' + user.album_list[user_key] + ' is also in user B\'s album_list: ' + other_users[compared_user].album_list + '\n');
                         match_count++;
+                    }else{
+                        //we don't have a match
+                        console.log('album: ' + user.album_list[user_key] + ' does not exist in user B\'s album_list: ' + other_users[compared_user].album_list + '\n');
                     }
                 }
-                results_list = results_list + ('match count for user ' + docs2[compared_user].name + ' is: ' + match_count + '<br>');
+                results_list = results_list + ('match count for user ' + other_users[compared_user].name + ' is: ' + match_count + '<br>');
 
                 //add this user_id plus their match count to a list
                 match_list.push({
-                    "_id": docs2[compared_user]._id,
-                    "name": docs2[compared_user].name,
+                    "_id": other_users[compared_user]._id,
+                    "name": other_users[compared_user].name,
                     "match_count": match_count
                 });
                 //reset the match_count back to 0
@@ -215,6 +219,63 @@ router.get('/getmatches/:user1', function (req, res, next) {
     });
 });
 
+//TODO this must be deleted once we don't need a hardcoded user
+router.get('/getmatches', function (req, res, next) {
+    //gets album matches for supplied user ID
+    var Shant = "Shant Hairapetian";
+    mongoose.model('users').find({name: Shant}, {}).exec(function (error, returned_user) {
+
+        var user_id = returned_user[0]._id;
+        console.log(user_id);
+        var match_list = [];
+        var Users = mongoose.model('users');
+        Users.findById(user_id, function (err, user) {
+            var returned_users = user;
+            Users.find().where('_id').ne(user_id).exec(function (err, other_users) {
+
+                //console.log('docs 1: ' + docs1);
+                console.log("other_users: " + other_users);
+                returned_users = returned_users + "\n" + other_users;
+
+                var match_count = 0;
+                var results_list = "";
+                for (var compared_user = 0; compared_user < other_users.length; compared_user++) {
+
+                    //find matches between two user's album lists
+                    for (user_key in user.album_list) {
+                        if (user_key in other_users[compared_user].album_list) {
+                            //we have a match
+                            console.log('album: ' + user.album_list[user_key] + ' is also in user B\'s album_list: ' + Object.keys(other_users[compared_user].album_list) + '\n');
+                            match_count++;
+                        } else {
+                            //we don't have a match
+                            console.log('album: ' + user.album_list[user_key] + ' does not exist in user B\'s album_list: ' + Object.keys(other_users[compared_user].album_list) + '\n');
+                        }
+                    }
+                    results_list = results_list + ('match count for user ' + other_users[compared_user].name + ' is: ' + match_count + '<br>');
+
+                    //add this user_id plus their match count to a list
+                    var other_user_results = [other_users[compared_user], match_count];
+                    match_list.push(other_user_results);
+                    //reset the match_count back to 0
+                    match_count = 0;
+                }
+
+                console.log('unsorted match list \n');
+                console.log(match_list);
+                console.log('\n');
+
+                match_list.sort(function (a, b) {
+                    return b[1] - a[1];
+                });
+
+                console.log('sorted match list \n');
+                console.log(match_list);
+                res.send(match_list);
+            });
+        });
+    });//end Shant .exec
+});
 
 function getUsersByProximity(user_id, callback) {
     var user_model = mongoose.model('users');
@@ -226,7 +287,7 @@ function getUsersByProximity(user_id, callback) {
                 type: 'Point',
                 coordinates: current_user[0].location
             },
-            maxDistance: 10000000000000000000000000
+            maxDistance: 100000000000000000000000000000000000
         }).where('_id').ne(user_id).exec(function (error, returned_users) {
             console.log(error);
             console.log('found users:\n' + returned_users);
@@ -287,7 +348,7 @@ router.post('/addtofollowing', function (req, res, next) {
         if (err) {
             //TODO replace with better error handling later
             res.sendStatus(500);
-        }else {
+        } else {
             res.sendStatus(200);
         }
     });
@@ -347,35 +408,53 @@ function addToFollowing(user_following_id, user_followed_id, callback) {
 }
 
 router.get('/seeder', function (req, res, next) {
-     mongoose.model('users').find({}, {}).remove(function (err) {
-     console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
+    mongoose.model('users').find({}, {}).remove(function (err) {
+        console.log((err === null) ? {msg: 'no problems deleting everything!'} : {msg: 'error ' + err});
 
-     }).exec(function () {
+    }).exec(function () {
 
-    var personSchema = require('mongoose').model('users').schema;
-    var NewUser = mongoose.model('users', personSchema);
+        var personSchema = require('mongoose').model('users').schema;
+        var NewUser = mongoose.model('users', personSchema);
 
-    var i = 0;
-    while (i < 3) {
-
-        var new_user = NewUser({
-            age: chance.age(),
-            name: chance.name(),
-            gender: chance.gender(),
-            email: chance.email(),
+        var Shant_Hairapetian = NewUser({
+            age: 24,
+            name: "Shant Hairapetian",
+            gender: "Male",
+            email: "Shant.Shant.Shant@my.csun.edu",
             profile_image: Faker.image.avatar(),
-            album_list: seedAlbums(),
-            bio: chance.paragraph(),
-            location: [chance.floating({min: -180, max: 180, fixed: 6}),
-                chance.floating({min: -90, max: 90, fixed: 6})]
+            album_list: itunes_albums,
+            bio: "Hello World.",
+            location: [-118.527178, 34.242349]
 
         });
-        new_user.save(function (err, test_user) {
+        Shant_Hairapetian.save(function (err, test_user) {
             if (err) return console.error(err);
         });
-        i++;
-    }
-    res.redirect('/');
+
+        var i = 0;
+        while (i < 3) {
+
+            var new_user = NewUser({
+                age: chance.age(),
+                name: chance.name(),
+                gender: chance.gender(),
+                email: chance.email(),
+                profile_image: Faker.image.avatar(),
+                album_list: seedAlbums(),
+                bio: chance.paragraph(),
+                location: [chance.floating({min: -180, max: 180, fixed: 6}),
+                    chance.floating({min: -90, max: 90, fixed: 6})]
+
+            });
+            new_user.save(function (err, test_user) {
+                if (err) return console.error(err);
+            });
+            i++;
+        }
+
+
+
+        res.redirect('/');
 
     });
 });
@@ -405,7 +484,6 @@ function seedAlbums() {
             new_album_list[new_album_name] = new_album_artist_name;
         }
     }
-
     console.log(new_album_list);
     console.log("Album matches:");
     console.log(matched_album);
@@ -517,7 +595,7 @@ var itunes_albums =
     "The Collective": "Scale the Summit",
     "In Dreams": "After the Burial",
     "Asleep Next to Science": "Orbs",
-    "Ont\' Sofa Vol. 1.": "Billie Marten",
+    "Ont\' Sofa Vol 1": "Billie Marten",
     "Zero Order Phase": "Jeff Loomis",
     "Lingua Franca - EP": "T.R.A.M",
     "Midan": "Eileen Khatchadourian",
@@ -528,7 +606,7 @@ var itunes_albums =
     "Victory Songs": "Ensiferum",
     "Opus Eponymous": "Ghost B.C.",
     "Lore": "Today I Caught the Plague",
-    "Episode 27 - Ghosts of the Ostfront I (feat. Dan Carlin)": "Dan Carlin\'s Hardcore History",
+    "Episode 27 - Ghosts of the Ostfront I (feat Dan Carlin)": "Dan Carlin's Hardcore History",
     "Helvetios": "Eluveitie",
     "The Quantum Hack Code": "Amogh Symphony",
     "Come Clarity": "In Flames",
@@ -561,7 +639,7 @@ var itunes_albums =
     "Dead Throne": "The Devil Wears Prada",
     "An Ocean Between Us": "As I Lay Dying",
     "The Parallax II: Future Sequence": "Between the Buried and Me",
-    "Monarchy (feat. Dan Tompkins) - Single": "Star Monarchy",
+    "Monarchy (feat Dan Tompkins) - Single": "Star Monarchy",
     "The Lion\'s Roar (Bonus Track Version)": "First Aid Kit",
     "Reinkaos": "Dissection",
     "Juggernaut: Omega": "Periphery",
