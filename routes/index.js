@@ -287,7 +287,8 @@ function getUsersByProximity(user_id, callback) {
                 type: 'Point',
                 coordinates: current_user[0].location
             },
-            maxDistance: 100000000000000000000000000000000000
+            //12 miles is approx. 19312 meters
+            maxDistance: 19312
         }).where('_id').ne(user_id).exec(function (error, returned_users) {
             console.log(error);
             console.log('found users:\n' + returned_users);
@@ -432,7 +433,7 @@ router.get('/seeder', function (req, res, next) {
         });
 
         var i = 0;
-        while (i < 3) {
+        while (i < 50) {
 
             var new_user = NewUser({
                 age: chance.age(),
@@ -442,8 +443,8 @@ router.get('/seeder', function (req, res, next) {
                 profile_image: Faker.image.avatar(),
                 album_list: seedAlbums(),
                 bio: chance.paragraph(),
-                location: [chance.floating({min: -180, max: 180, fixed: 6}),
-                    chance.floating({min: -90, max: 90, fixed: 6})]
+                location: [chance.floating({min: -118.849621, max: -117.838879, fixed: 6}),
+                    chance.floating({min: 33.741245, max: 34.507465, fixed: 6})]
 
             });
             new_user.save(function (err, test_user) {
