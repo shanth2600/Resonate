@@ -227,7 +227,7 @@ router.get('/getmatches', function (req, res, next) {
 
         var user_id = returned_user[0]._id;
         console.log(user_id);
-        var match_list = [];
+        var match_list = [];        
         var Users = mongoose.model('users');
         Users.findById(user_id, function (err, user) {
             var returned_users = user;
@@ -241,11 +241,14 @@ router.get('/getmatches', function (req, res, next) {
                 var results_list = "";
                 for (var compared_user = 0; compared_user < other_users.length; compared_user++) {
 
+                    var matches = {};
+
                     //find matches between two user's album lists
                     for (user_key in user.album_list) {
                         if (user_key in other_users[compared_user].album_list) {
                             //we have a match
                             console.log('album: ' + user.album_list[user_key] + ' is also in user B\'s album_list: ' + Object.keys(other_users[compared_user].album_list) + '\n');
+                            matches[user_key] = user.album_list[user_key];
                             match_count++;
                         } else {
                             //we don't have a match
@@ -254,6 +257,9 @@ router.get('/getmatches', function (req, res, next) {
                     }
                     results_list = results_list + ('match count for user ' + other_users[compared_user].name + ' is: ' + match_count + '<br>');
 
+                    other_users[compared_user].match_list = matches;
+                    other_users[compared_user].match_score = match_count;
+                    
                     //add this user_id plus their match count to a list
                     var other_user_results = [other_users[compared_user], match_count];
                     match_list.push(other_user_results);

@@ -20,6 +20,8 @@ var personSchema = new mongoose.Schema({
     profile_image: String,
     //album_list: [number],
     album_list: {},
+    match_list: {},
+    match_score: String,
     bio: String,
     location: {
         type: [Number], index: '2dsphere'
