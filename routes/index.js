@@ -206,6 +206,7 @@ router.get('/getmatches/:user_id', function (req, res, next) {
                     "_id": other_users[compared_user]._id,
                     "name": other_users[compared_user].name,
                     "match_count": match_count
+
                 });
                 //reset the match_count back to 0
                 match_count = 0;
@@ -248,54 +249,63 @@ router.get('/getmatches', function (req, res, next) {
         var Users = mongoose.model('users');
         Users.findById(user_id, function (err, user) {
             var returned_users = user;
-            Users.find().where('_id').ne(user_id).exec(function (err, other_users) {
+            //Users.find().where('_id').ne(user_id).exec(function (err, other_users) {
 
                 //console.log('docs 1: ' + docs1);
                 console.log("other_users: " + other_users);
                 returned_users = returned_users + "\n" + other_users;
 
-                var match_count = 0;
-                var results_list = "";
-                for (var compared_user = 0; compared_user < other_users.length; compared_user++) {
+                mongoose.model('users').find().where('location').near({
+                    center: {
+                        type: 'Point',
+                        coordinates: returned_user[0].location
+                    },
+                    //50 miles is approx. 80468 meters
+                    maxDistance: 80468
+                }).where('_id').ne(user_id).exec(function (error, returned_users) {
+                    var match_count = 0;
+                    var results_list = "";
+                    for (var compared_user = 0; compared_user < returned_users.length; compared_user++) {
 
-                    var matches = {};
+                        var matches = {};
 
-                    //find matches between two user's album lists
-                    for (user_key in user.album_list) {
-                        if (user_key in other_users[compared_user].album_list) {
-                            //we have a match
-                            console.log('album: ' + user.album_list[user_key] + ' is also in user B\'s album_list: ' + Object.keys(other_users[compared_user].album_list) + '\n');
-                            matches[user_key] = user.album_list[user_key];
-                            match_count++;
-                        } else {
-                            //we don't have a match
-                            console.log('album: ' + user.album_list[user_key] + ' does not exist in user B\'s album_list: ' + Object.keys(other_users[compared_user].album_list) + '\n');
+                        //find matches between two user's album lists
+                        for (user_key in user.album_list) {
+                            if (user_key in returned_users[compared_user].album_list) {
+                                //we have a match
+                                console.log('album: ' + user.album_list[user_key] + ' is also in user B\'s album_list: ' + Object.keys(returned_users[compared_user].album_list) + '\n');
+                                matches[user_key] = user.album_list[user_key];
+                                match_count++;
+                            } else {
+                                //we don't have a match
+                                console.log('album: ' + user.album_list[user_key] + ' does not exist in user B\'s album_list: ' + Object.keys(returned_users[compared_user].album_list) + '\n');
+                            }
                         }
+                        results_list = results_list + ('match count for user ' + returned_users[compared_user].name + ' is: ' + match_count + '<br>');
+
+                        returned_users[compared_user].match_list = matches;
+                        returned_users[compared_user].match_score = match_count;
+
+                        //add this user_id plus their match count to a list
+                        var other_user_results = [returned_users[compared_user], match_count];
+                        match_list.push(other_user_results);
+                        //reset the match_count back to 0
+                        match_count = 0;
                     }
-                    results_list = results_list + ('match count for user ' + other_users[compared_user].name + ' is: ' + match_count + '<br>');
 
-                    other_users[compared_user].match_list = matches;
-                    other_users[compared_user].match_score = match_count;
-                    
-                    //add this user_id plus their match count to a list
-                    var other_user_results = [other_users[compared_user], match_count];
-                    match_list.push(other_user_results);
-                    //reset the match_count back to 0
-                    match_count = 0;
-                }
+                    console.log('unsorted match list \n');
+                    console.log(match_list);
+                    console.log('\n');
 
-                console.log('unsorted match list \n');
-                console.log(match_list);
-                console.log('\n');
+                    match_list.sort(function (a, b) {
+                        return b[1] - a[1];
+                    });
 
-                match_list.sort(function (a, b) {
-                    return b[1] - a[1];
+                    console.log('sorted match list \n');
+                    console.log(match_list);
+                    res.send(match_list);
                 });
-
-                console.log('sorted match list \n');
-                console.log(match_list);
-                res.send(match_list);
-            });
+           // });
         });
     });//end Shant .exec
 });
