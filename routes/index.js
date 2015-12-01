@@ -170,6 +170,13 @@ router.get('/getmatches/:user_id', function (req, res, next) {
     Users.findById(user_id, function (err, user) {
         console.log('inside getmatch2-2');
         var returned_users = user;
+        mongoose.model('users').find().where('location').near({
+            center: {
+                type: 'Point',
+                coordinates: current_user[0].location
+            },
+            maxDistance: 1000
+        })
         Users.find().where('_id').ne(user_id).exec(function (err, other_users) {
 
             console.log('inside getmatch2-3');
@@ -627,7 +634,7 @@ var itunes_albums =
     "Lingua Franca - EP": "T.R.A.M",
     "Midan": "Eileen Khatchadourian",
     "Sworn To The Dark": "Watain",
-    "Basal Ganglia - EP": "Mestís",
+    "Basal Ganglia - EP": "Mestï¿½s",
     "Periphery": "Periphery",
     "Thirteenth Step": "A Perfect Circle",
     "Victory Songs": "Ensiferum",
@@ -691,7 +698,7 @@ var itunes_albums =
     "Alone": "Evan Brewer",
     "Option Paralysis (Special Edition)": "The Dillinger Escape Plan",
     "Origins (Bonus Track Version)": "Eluveitie",
-    "Ulg": "Metsatöll",
+    "Ulg": "Metsatï¿½ll",
     "Separate Realities": "Trioscapes",
     "Black Waltz": "Kalmah",
     "Make Total Destroy - Single": "Periphery",
@@ -728,7 +735,7 @@ var itunes_albums =
     "Yerke Nayev Aghotk E": "Harout Pamboukjian & Rouben Hakhverdian",
     "Sound Awake": "Karnivool",
     "Redwoods - Single": "Scale the Summit",
-    "By the Light of the Northern Star": "Týr",
+    "By the Light of the Northern Star": "Tï¿½r",
     "Clayman": "In Flames",
     "This Type of Thinking (Could Do Us In)": "Chevelle",
     "Ad Majorem Sathanas Gloriam": "Gorgoroth",
@@ -740,7 +747,7 @@ var itunes_albums =
     "For The Revolution": "Kalmah",
     "One": "TesseracT",
     "The Fury of Our Maker\'s Hand": "DevilDriver",
-    "Valkyrja": "Týr",
+    "Valkyrja": "Tï¿½r",
     "Miasma": "The Black Dahlia Murder",
     "The King Is Dead": "The Decemberists",
     "The Way of All Flesh": "Gojira",
@@ -748,12 +755,12 @@ var itunes_albums =
     "Vengeance Falls": "Trivium",
     "[id]": "Veil of Maya",
     "Seaborne - EP": "Apostate",
-    "Les voyages de l\'âme": "Alcest",
+    "Les voyages de l\'ï¿½me": "Alcest",
     "Rhythm, Chord & Melody": "The Reign of Kindo",
     "Shogun": "Trivium",
     "Atonement": "Fred Brum",
     "Yellow & Green": "Baroness",
-    "Måsstaden": "vildhjarta",
+    "Mï¿½sstaden": "vildhjarta",
     "The Great Cold Distance": "Katatonia",
     "Disclosure": "The HAARP Machine",
     "No World for Tomorrow": "Coheed and Cambria",
