@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Chance = require('chance');
 var chance = new Chance();
-var Faker = require('Faker');
+var Faker = require('faker');
 
 router.get('/', function (req, res, next) {
     mongoose.model('users').find(function (req, users) {
@@ -219,6 +219,16 @@ router.get('/getmatches/:user_id', function (req, res, next) {
     });
 });
 
+router.get('/getMyUser',function (req, res, next) {
+    var Shant = "Shant Hairapetian";
+    mongoose.model('users')
+    .find({name: Shant}, {})
+    .populate('following')
+    .exec(function (error, returned_user) {
+        res.send(returned_user);
+    });
+});
+
 //TODO this must be deleted once we don't need a hardcoded user
 router.get('/getmatches', function (req, res, next) {
     //gets album matches for supplied user ID
@@ -344,6 +354,16 @@ router.post('/adduser', function (req, res, next) {
         console.log("test_user saved!");
         res.redirect('/');
     });
+});
+
+router.get('/addToMyFollowing/:user',function(req, res, next){
+    var Shant = "Shant Hairapetian";
+    mongoose.model('users').find({name: Shant}, {}).exec(function (error, returned_user) {
+        // res.send(returned_user[0].id);
+        addToFollowing(returned_user[0].id,req.params.user);
+        res.send(200);
+    });
+
 });
 
 router.post('/addtofollowing', function (req, res, next) {
