@@ -173,7 +173,7 @@ router.get('/getmatches/:user_id', function (req, res, next) {
         mongoose.model('users').find().where('location').near({
             center: {
                 type: 'Point',
-                coordinates: current_user[0].location
+                coordinates: user[0].location
             },
             maxDistance: 1000
         })
